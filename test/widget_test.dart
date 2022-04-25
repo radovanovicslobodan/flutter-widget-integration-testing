@@ -8,7 +8,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:multipage/email_widget.dart';
-
 import 'package:multipage/password_widget.dart';
 
 void main() {
