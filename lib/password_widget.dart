@@ -32,7 +32,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
     }
   }
 
-  void _saveForm() {
+  void _submitForm() {
     showDialog(
       builder: (context) => SimpleDialog(
         contentPadding: const EdgeInsets.all(8),
@@ -40,7 +40,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
           const Text('You succesfully saved your form.'),
           ElevatedButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Dissmiss'),
+            child: const Text('Dissmiss', key: Key("dissmissButton")),
           ),
         ],
       ),
@@ -51,9 +51,9 @@ class _PasswordWidgetState extends State<PasswordWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      // ignore: prefer_const_constructors
       children: <Widget>[
         TextField(
+          key: const Key("passwordInput"),
           decoration: const InputDecoration(labelText: 'password'),
           keyboardType: TextInputType.visiblePassword,
           obscureText: true,
@@ -70,15 +70,17 @@ class _PasswordWidgetState extends State<PasswordWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ElevatedButton(
+                key: const Key("backButton"),
                 onPressed: () {
                   widget.backCallback(0);
                 },
                 child: const Text("Back")),
             ElevatedButton(
+                key: const Key("submitButton"),
                 onPressed: () {
                   _validatePassword();
                   if (_passwordValid) {
-                    _saveForm();
+                    _submitForm();
                   }
                 },
                 child: const Text("Submit")),

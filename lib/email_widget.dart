@@ -37,9 +37,9 @@ class _EmailWidgetState extends State<EmailWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      // ignore: prefer_const_constructors
       children: <Widget>[
         TextField(
+          key: const Key("emailInput"),
           decoration: const InputDecoration(labelText: 'email'),
           keyboardType: TextInputType.emailAddress,
           textInputAction: TextInputAction.next,
@@ -55,9 +55,10 @@ class _EmailWidgetState extends State<EmailWidget> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             ElevatedButton(
+                key: const Key("nextButton"),
                 onPressed: () {
                   _validateEmail();
-                  if (_emailValid && widget.index == 0) {
+                  if (_emailValid) {
                     widget.nextCallback(1);
                   }
                 },
